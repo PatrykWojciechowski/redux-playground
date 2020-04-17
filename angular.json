@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "redux-playground"
+    }
+  },
+  "defaultProject": "redux-playground",
+  "cli": {
+    "analytics": false
+  }
 }
