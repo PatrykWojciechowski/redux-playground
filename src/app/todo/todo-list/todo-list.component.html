@@ -1,0 +1,13 @@
+<div>
+  <p>Add todo:</p>
+  <p>
+    <input [formControl]="todoControl" type="text" />
+    <button (click)="add()">Add</button>
+  </p>
+</div>
+
+<ol>
+  <li *ngFor="let todo of todos$ | async">
+    {{ todo.task }}<button (click)="remove(todo.id)">Remove</button>
+  </li>
+</ol>

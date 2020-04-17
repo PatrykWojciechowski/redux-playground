@@ -3,18 +3,26 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TodoComponent } from './todo/todo.component';
+import { TodoListComponent } from './todo/todo-list/todo-list.component';
+import { StoreModule } from '@ngrx/store';
+import { todoListReducer } from './todo/reducer';
+import { ReactiveFormsModule } from '@angular/forms';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    TodoComponent
-  ],
+  declarations: [AppComponent, TodoListComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot({
+      todoList: todoListReducer,
+    }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+    }),
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
