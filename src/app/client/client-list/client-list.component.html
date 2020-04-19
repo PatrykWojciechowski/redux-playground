@@ -1,5 +1,10 @@
-<ol>
-  <li *ngFor="let client of clients$ | async">
-    {{ client.name }}
-  </li>
-</ol>
+<button (click)="fetchClients()">Fetch clients</button>
+<div *ngFor="let client of clients$ | async">Product: {{ client.name }}</div>
+<div *ngIf="loading$ | async; let loading">
+  <div *ngIf="loading">
+    loading...
+  </div>
+</div>
+<div *ngIf="error$ | async; let error">
+  <div *ngIf="error">{{ error }}</div>
+</div>
