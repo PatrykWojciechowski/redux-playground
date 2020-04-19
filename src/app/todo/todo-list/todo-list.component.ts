@@ -18,7 +18,9 @@ export class TodoListComponent implements OnInit {
   todoControl = new FormControl();
 
   constructor(private store: Store<AppState>) {
-    this.todos$ = store.select('todoList');
+    this.todos$ = this.store.select((state) => {
+      return state.todo.list;
+    });
   }
 
   add() {

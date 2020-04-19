@@ -6,7 +6,7 @@ export function todoListReducer(state: Todo[] = [], action) {
     case ADD_TODO:
       return [...state, { ...action.payload }];
     case REMOVE_TODO:
-      return state.filter((todo) => todo.id !== action.payload);
+      return state.filter((todo) => todo.id !== action.payload.id);
     case LOAD_TODO:
       return [...state, { ...action.payload }];
     default:

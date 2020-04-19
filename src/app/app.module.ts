@@ -8,19 +8,19 @@ import { StoreModule } from '@ngrx/store';
 import { todoListReducer } from './todo/reducer';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { TodoModule } from './todo/todo.module';
 
 @NgModule({
   declarations: [AppComponent, TodoListComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({
-      todoList: todoListReducer,
-    }),
+    StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
     }),
     ReactiveFormsModule,
+    TodoModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

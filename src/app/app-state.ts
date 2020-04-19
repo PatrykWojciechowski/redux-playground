@@ -1,5 +1,5 @@
-import { Todo } from './todo/todo.model';
+import { TodoState } from './todo/todo.module';
 
 export interface AppState {
-  todoList: Array<Todo>;
+  todo: TodoState;
 }

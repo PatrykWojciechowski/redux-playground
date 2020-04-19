@@ -400,12 +400,7 @@
   <p>Here are some links to help you get started:</p>
 
   <div class="card-container">
-    <a
-      class="card"
-      target="_blank"
-      rel="noopener"
-      href="https://angular.io/tutorial"
-    >
+    <a class="card" rel="noopener" [routerLink]="['/todo']">
       <svg
         class="material-icons"
         xmlns="http://www.w3.org/2000/svg"
@@ -418,7 +413,7 @@
         />
       </svg>
 
-      <span>Learn Angular</span>
+      <span>Simple Todo</span>
 
       <svg
         class="material-icons"
@@ -449,7 +444,7 @@
         />
       </svg>
 
-      <span>CLI Documentation</span>
+      <span>Fake API Products</span>
 
       <svg
         class="material-icons"
@@ -462,12 +457,7 @@
       </svg>
     </a>
 
-    <a
-      class="card"
-      target="_blank"
-      rel="noopener"
-      href="https://blog.angular.io/"
-    >
+    <a class="card" rel="noopener" [routerLink]="['/products']">
       <svg
         class="material-icons"
         xmlns="http://www.w3.org/2000/svg"
@@ -502,7 +492,5 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
-<app-todo-list></app-todo-list>
 
 <router-outlet></router-outlet>
