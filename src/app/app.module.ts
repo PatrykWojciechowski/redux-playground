@@ -5,10 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TodoListComponent } from './todo/todo-list/todo-list.component';
 import { StoreModule } from '@ngrx/store';
-import { todoListReducer } from './todo/reducer';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { TodoModule } from './todo/todo.module';
+import { EffectsModule } from '@ngrx/effects';
+import { ClientEffects } from './client/client.effect';
 
 @NgModule({
   declarations: [AppComponent, TodoListComponent],
