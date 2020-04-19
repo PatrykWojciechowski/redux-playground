@@ -9,7 +9,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { TodoModule } from './todo/todo.module';
 import { EffectsModule } from '@ngrx/effects';
-import { ClientEffects } from './client/client.effect';
 
 @NgModule({
   declarations: [AppComponent, TodoListComponent],
@@ -17,6 +16,7 @@ import { ClientEffects } from './client/client.effect';
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
     }),
