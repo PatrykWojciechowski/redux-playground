@@ -1,1 +1,5 @@
-<p>client-list works!</p>
+<ol>
+  <li *ngFor="let client of clients$ | async">
+    {{ client.name }}
+  </li>
+</ol>
