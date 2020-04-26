@@ -12,6 +12,10 @@ const routes: Routes = [
       import('./client/client.module').then((m) => m.ClientModule),
   },
   {
+    path: 'user',
+    loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
+  },
+  {
     path: '',
     redirectTo: '',
     pathMatch: 'full',

@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { TodoModule } from './todo/todo.module';
 import { EffectsModule } from '@ngrx/effects';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [AppComponent, TodoListComponent],
@@ -22,6 +23,7 @@ import { EffectsModule } from '@ngrx/effects';
     }),
     ReactiveFormsModule,
     TodoModule,
+    UserModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
