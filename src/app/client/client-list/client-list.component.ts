@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../app-state';
 import { Client } from '../client.model';
 import { getList, isError, isLoading } from '../client.selector';
-import { fetchClients } from '../client-actions';
+import { addClient, fetchClients } from '../client-actions';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-client-list',
@@ -16,6 +17,9 @@ export class ClientListComponent {
   loading$: Observable<boolean>;
   error$: Observable<string>;
 
+  counter = 100;
+  productControl = new FormControl();
+
   constructor(private store: Store<AppState>) {
     this.clients$ = this.store.select(getList);
     this.loading$ = this.store.select(isLoading);
@@ -24,5 +28,14 @@ export class ClientListComponent {
 
   fetchClients() {
     this.store.dispatch(fetchClients());
+  }
+
+  addNewClient() {
+    this.store.dispatch(
+      addClient({
+        id: this.counter++,
+        name: this.productControl.value,
+      } as Client)
+    );
   }
 }

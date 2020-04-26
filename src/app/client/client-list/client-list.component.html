@@ -1,3 +1,11 @@
+<div>
+  <p>Add product:</p>
+  <p>
+    <input [formControl]="productControl" type="text" />
+    <button (click)="addNewClient()">Add</button>
+  </p>
+</div>
+
 <button (click)="fetchClients()">Fetch clients</button>
 <div *ngFor="let client of clients$ | async">Product: {{ client.name }}</div>
 <div *ngIf="loading$ | async; let loading">

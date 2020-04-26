@@ -8,6 +8,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { ClientEffects } from './client.effect';
 import { StoreModule } from '@ngrx/store';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [ClientListComponent],
@@ -17,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
     EffectsModule.forFeature([ClientEffects]),
     ClientRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
 })
 export class ClientModule {}
