@@ -127,6 +127,6 @@
   },
   "defaultProject": "redux-playground",
   "cli": {
-    "analytics": false
+    "defaultCollection": "@ngrx/schematics"
   }
 }
