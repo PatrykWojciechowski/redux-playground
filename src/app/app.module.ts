@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
+import {ProductsModule} from "./products/products.module";
 
 @NgModule({
   declarations: [
@@ -12,6 +12,7 @@ import { StoreModule } from '@ngrx/store';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ProductsModule,
     StoreModule.forRoot({}, {})
   ],
   providers: [],
