@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {ProductListComponent} from './product-list/product-list.component';
 import {StoreModule} from '@ngrx/store';
 import {productsReducer} from './product.reducers';
-import {Effect, EffectsModule} from "@ngrx/effects";
+import {EffectsModule} from "@ngrx/effects";
 import {ProductEffects} from "./product.effects";
 import {RouterModule, Routes} from "@angular/router";
 import {ProductsResolver} from "./products.resolver";

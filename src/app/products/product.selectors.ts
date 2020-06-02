@@ -13,10 +13,10 @@ export const selectAllProducts = createSelector(
 
 export const selectFoodProducts = createSelector(
   selectAllProducts,
-  products => products.filter(product => product.type == 'FOOD')
+  products => products.filter(product => product.category == 'FOOD')
 );
 
-// export const cheapestProduct = createSelector(
-//   products,
-//   products => products.sort((p1, p2) => p1.price > p2.price)[0]
-// )
+export const areProductsLoaded = createSelector(
+  selectProductState,
+  state => state.productsLoaded
+)

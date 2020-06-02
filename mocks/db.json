@@ -5,7 +5,7 @@
       "name": "Apple",
       "price": "2",
       "category": "FOOD",
-      "seqNum": 2
+      "seqNum": 6
     },
     {
       "id": 2,
@@ -19,7 +19,7 @@
       "name": "Mouse",
       "price": "50",
       "category": "ELECTRONIC",
-      "seqNum": 1
+      "seqNum": 5
     },
     {
       "id": 4,
@@ -33,14 +33,14 @@
       "name": "Bread",
       "price": "5",
       "category": "FOOD",
-      "seqNum": 5
+      "seqNum": 2
     },
     {
       "id": 6,
       "name": "Milk",
       "price": "3",
       "category": "FOOD",
-      "seqNum": 6
+      "seqNum": 1
     }
   ]
 }
