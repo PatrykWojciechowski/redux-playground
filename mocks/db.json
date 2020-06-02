@@ -3,32 +3,44 @@
     {
       "id": 1,
       "name": "Apple",
-      "price": "2"
+      "price": "2",
+      "category": "FOOD",
+      "seqNum": 2
     },
     {
       "id": 2,
       "name": "Phone",
-      "price": "999"
+      "price": "999",
+      "category": "ELECTRONIC",
+      "seqNum": 4
     },
     {
       "id": 3,
-      "name": "Dog",
-      "price": "50"
+      "name": "Mouse",
+      "price": "50",
+      "category": "ELECTRONIC",
+      "seqNum": 1
     },
     {
       "id": 4,
       "name": "Keyboard",
-      "price": "25"
+      "price": "25",
+      "category": "ELECTRONIC",
+      "seqNum": 3
     },
     {
       "id": 5,
       "name": "Bread",
-      "price": "5"
+      "price": "5",
+      "category": "FOOD",
+      "seqNum": 5
     },
     {
       "id": 6,
       "name": "Milk",
-      "price": "3"
+      "price": "3",
+      "category": "FOOD",
+      "seqNum": 6
     }
   ]
 }
