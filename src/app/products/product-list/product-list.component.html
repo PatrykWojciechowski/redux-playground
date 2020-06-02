@@ -1,1 +1,6 @@
-<p>product-list works!</p>
+<div *ngIf="products$ | async as products">
+  <p *ngFor="let product of products; let i = index">
+    <span>{{i}}. </span><span>{{product.name}}</span>
+  </p>
+
+</div>
