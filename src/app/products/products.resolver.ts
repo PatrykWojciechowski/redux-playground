@@ -10,6 +10,8 @@ import {ProductsModule} from "./products.module";
 @Injectable()
 export class ProductsResolver implements Resolve<any> {
 
+  loading = false;
+
   constructor(
     private store: Store<State>
   ) {}
@@ -18,7 +20,10 @@ export class ProductsResolver implements Resolve<any> {
           state: RouterStateSnapshot): Observable<any> {
     return this.store.pipe(
       tap(() => {
-        this.store.dispatch(fetchProducts())
+          if (!this.loading) {
+            this.loading = true;
+            this.store.dispatch(fetchProducts())
+          }
       }),
       first()
     )
