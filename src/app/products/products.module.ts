@@ -8,6 +8,7 @@ import {ProductEffects} from "./product.effects";
 import {RouterModule, Routes} from "@angular/router";
 import {ProductsResolver} from "./products.resolver";
 import {HttpClientModule} from "@angular/common/http";
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 export const routes: Routes = [
   {
@@ -16,11 +17,15 @@ export const routes: Routes = [
     resolve: {
       products: ProductsResolver
     }
+  },
+  {
+    path: ':productId',
+    component: ProductDetailsComponent
   }
 ]
 
 @NgModule({
-  declarations: [ProductListComponent],
+  declarations: [ProductListComponent, ProductDetailsComponent],
   imports: [
     CommonModule,
     StoreModule.forFeature(

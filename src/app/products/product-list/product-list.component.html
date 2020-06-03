@@ -1,5 +1,5 @@
 <div *ngIf="products$ | async as products">
   <p *ngFor="let product of products; let i = index">
-    <span>{{i}}. </span><span>{{product.name}}</span>
+    <span>{{i}}. </span><a [routerLink]="['/products', product.id]">{{product.name}}</a>
   </p>
 </div>
