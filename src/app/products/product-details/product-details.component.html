@@ -1,1 +1,12 @@
-<p>product-details works!</p>
+<p>EDIT PRODUCT -> </p>
+<div [formGroup]="form" >
+  <label>
+    <span>Name</span>
+    <input type="text" formControlName="name"/>
+  </label>
+  <label>
+    <span>Price</span>
+    <input type="text" formControlName="price"/>
+  </label>
+  <button (click)="updateProduct()">Save</button>
+</div>

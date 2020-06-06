@@ -12,6 +12,7 @@ import {createEntityAdapter, EntityState} from "@ngrx/entity";
 export const productsFeatureKey = 'products';
 
 export interface ProductState extends EntityState<Product>{
+  selectedProductId: number;
   productsLoaded: boolean;
 }
 
@@ -20,18 +21,30 @@ export const adapter = createEntityAdapter<Product>({
 });
 
 export const initialProductState = adapter.getInitialState({
+  electedProductId: null,
   productsLoaded: false
 });
 
 export const productsReducer = createReducer(
+
   initialProductState,
+
   on(ProductActions.fetchProductsSuccessfully,
     (state, action) => adapter.addMany(
       action.products,
       {...state, productsLoaded: true}
-    ))
+    )),
+
+  on(ProductActions.productUpdated,
+    (state, action) => adapter.updateOne(
+      action.update, state)
+    ),
+
+  on(ProductActions.selectProduct,
+    (state, action) => ({...state, selectedProductId: action.id})
+    )
 )
 
 export const {
- selectAll
+ selectAll,
 } = adapter.getSelectors();

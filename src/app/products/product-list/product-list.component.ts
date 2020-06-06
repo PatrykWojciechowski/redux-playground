@@ -12,7 +12,6 @@ import {selectAllProducts} from "../product.selectors";
 export class ProductListComponent implements OnInit {
 
   products$: Observable<Product[]>;
-  loading$
 
   constructor(
     private store: Store

@@ -9,6 +9,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {ProductsResolver} from "./products.resolver";
 import {HttpClientModule} from "@angular/common/http";
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 export const routes: Routes = [
   {
@@ -31,12 +32,13 @@ export const routes: Routes = [
     StoreModule.forFeature(
       "product",
       productsReducer
-      ),
+    ),
     EffectsModule.forFeature([
       ProductEffects
     ]),
     HttpClientModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ReactiveFormsModule
   ],
   providers: [
     ProductsResolver

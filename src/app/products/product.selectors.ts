@@ -20,3 +20,14 @@ export const areProductsLoaded = createSelector(
   selectProductState,
   state => state.productsLoaded
 )
+
+export const selectCurrentProductId = createSelector(
+  selectProductState,
+  state => state.selectedProductId
+)
+
+export const selectCurrentProduct = createSelector(
+  selectAllProducts,
+  selectCurrentProductId,
+  (products, id) => products[id]
+)
