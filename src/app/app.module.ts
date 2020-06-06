@@ -9,6 +9,7 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {environment} from '../environments/environment';
 import {EffectsModule} from "@ngrx/effects";
 import {RouterState, StoreRouterConnectingModule} from '@ngrx/router-store';
+import { EntityDataModule } from '@ngrx/data';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {RouterState, StoreRouterConnectingModule} from '@ngrx/router-store';
     StoreRouterConnectingModule.forRoot({
       stateKey: 'router',
       routerState: RouterState.Minimal
-    })
+    }),
+    EntityDataModule.forRoot({})
   ],
 
   providers: [],
