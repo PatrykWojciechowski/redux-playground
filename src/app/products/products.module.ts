@@ -10,6 +10,7 @@ import {ProductsResolver} from "./products.resolver";
 import {HttpClientModule} from "@angular/common/http";
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { EntityDataModule, EntityMetadataMap, EntityDefinitionService } from '@ngrx/data';
 
 export const routes: Routes = [
   {
@@ -25,6 +26,13 @@ export const routes: Routes = [
   }
 ]
 
+const entityMetadata: EntityMetadataMap = {
+  Product: {
+
+  }
+}
+
+
 @NgModule({
   declarations: [ProductListComponent, ProductDetailsComponent],
   imports: [
@@ -38,10 +46,18 @@ export const routes: Routes = [
     ]),
     HttpClientModule,
     RouterModule.forChild(routes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     ProductsResolver
   ]
 })
-export class ProductsModule { }
+export class ProductsModule {
+
+  constructor(private eds: EntityDefinitionService) {
+
+    eds.registerMetadataMap(entityMetadata);
+  }
+
+
+}
