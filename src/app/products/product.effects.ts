@@ -4,9 +4,9 @@ import {ProductActions} from "./action-types";
 import {concatMap, map, switchMap, tap} from "rxjs/operators";
 import {HttpClient} from "@angular/common/http";
 import {Product} from "./product.model";
-import {fetchProductsSuccessfully} from "./product.actions";
+import {fetchProductsSuccessfully, productUpdated} from "./product.actions";
 
-const GET_CLIENTS_API_URL = 'http://localhost:3000/products';
+const GET_CLIENTS_API = 'http://localhost:3000/products';
 
 @Injectable()
 export class ProductEffects {
@@ -15,9 +15,18 @@ export class ProductEffects {
     () => this.actions$
       .pipe(
         ofType(ProductActions.fetchProducts),
-        switchMap(action => this.httpClient.get<Product[]>(GET_CLIENTS_API_URL)),
+        concatMap(action => this.httpClient.get<Product[]>(GET_CLIENTS_API)),
         map(products => fetchProductsSuccessfully({products}))
     ))
+
+  saveProduct$ = createEffect(
+    () => this.actions$
+      .pipe(
+        ofType(ProductActions.productUpdated),
+        concatMap(action => this.httpClient.put<Product[]>(GET_CLIENTS_API + '/' + action.update.id, action.update.changes)),
+      ),
+    {dispatch: false}
+  )
 
   constructor(
     private actions$: Actions,
