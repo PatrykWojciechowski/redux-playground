@@ -1,36 +1,28 @@
 import {Injectable} from "@angular/core";
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from "@angular/router";
-import {Observable} from "rxjs";
-import {select, Store} from "@ngrx/store";
-import {State} from "../reducers";
-import {fetchProducts} from "./product.actions";
-import {filter, finalize, first, tap} from "rxjs/operators";
-import {ProductsModule} from "./products.module";
-import {areProductsLoaded} from "./product.selectors";
+import {Observable, of} from "rxjs";
+import {ProductEntityService} from "../services/product-entity.service";
+import {filter, first, map, tap} from "rxjs/operators";
 
 @Injectable()
-export class ProductsResolver implements Resolve<any> {
+export class ProductsResolver implements Resolve<boolean> {
 
-  loading = false;
-
-  constructor(
-    private store: Store<State>
-  ) {}
+  constructor(private productsService: ProductEntityService) {
+  }
 
   resolve(route: ActivatedRouteSnapshot,
-          state: RouterStateSnapshot): Observable<any> {
-    return this.store.pipe(
-      select(areProductsLoaded),
-      tap(prodcutsLoaded => {
-          if (!this.loading && !prodcutsLoaded) {
-            this.loading = true;
-            this.store.dispatch(fetchProducts())
+          state: RouterStateSnapshot): Observable<boolean> {
+
+    return this.productsService.loaded$
+      .pipe(
+        tap(loaded => {
+          if (!loaded){
+            this.productsService.getAll();
           }
-      }),
-      filter(productsLoaded => productsLoaded),
-      first(),
-      finalize(() => this.loading = false)
-    )
+        }),
+        filter(loaded => !!loaded),
+        first()
+      )
   }
 
 }

@@ -10,7 +10,9 @@ import {ProductsResolver} from "./products.resolver";
 import {HttpClientModule} from "@angular/common/http";
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import {ReactiveFormsModule} from "@angular/forms";
-import { EntityDataModule, EntityMetadataMap, EntityDefinitionService } from '@ngrx/data';
+import {EntityDataModule, EntityMetadataMap, EntityDefinitionService, EntityDataService} from '@ngrx/data';
+import {ProductsDataService} from "./products-data.service";
+import {ProductEntityService} from "../services/product-entity.service";
 
 export const routes: Routes = [
   {
@@ -22,7 +24,8 @@ export const routes: Routes = [
   },
   {
     path: ':productId',
-    component: ProductDetailsComponent
+    component: ProductDetailsComponent,
+
   }
 ]
 
@@ -49,14 +52,22 @@ const entityMetadata: EntityMetadataMap = {
     ReactiveFormsModule,
   ],
   providers: [
-    ProductsResolver
+    ProductEntityService,
+    ProductsResolver,
+    ProductsDataService
   ]
 })
 export class ProductsModule {
 
-  constructor(private eds: EntityDefinitionService) {
+  constructor(
+    private eds: EntityDefinitionService,
+    private entityDataService: EntityDataService,
+    private productDataService: ProductsDataService
+  ) {
 
     eds.registerMetadataMap(entityMetadata);
+
+    entityDataService.registerService('Product', productDataService)
   }
 
 
