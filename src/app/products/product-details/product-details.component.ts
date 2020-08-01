@@ -1,14 +1,8 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl} from "@angular/forms";
 import {Product} from "../product.model";
-import {select, Store} from "@ngrx/store";
-import {State} from "../../reducers";
-import {Update} from "@ngrx/entity";
-import {productUpdated, selectProduct} from "../product.actions";
-import {ActivatedRoute, ActivatedRouteSnapshot, Route} from "@angular/router";
-import {filter, map, tap} from "rxjs/operators";
-import {selectCurrentProduct, selectCurrentProductId} from "../product.selectors";
-import {Observable} from "rxjs";
+import {ActivatedRoute} from "@angular/router";
+import {map} from "rxjs/operators";
 import {ProductEntityService} from "../../services/product-entity.service";
 
 @Component({

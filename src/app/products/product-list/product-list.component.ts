@@ -1,9 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {select, Store} from "@ngrx/store";
-import {fetchProducts} from "../product.actions";
+import {Component, OnInit} from '@angular/core';
 import {Product} from "../product.model";
 import {Observable} from "rxjs";
-import {selectAllProducts} from "../product.selectors";
 import {ProductEntityService} from "../../services/product-entity.service";
 
 @Component({

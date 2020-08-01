@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {DefaultDataService, HttpUrlGenerator} from "@ngrx/data";
-import {Product} from "./product.model";
+import {Product} from "../products/product.model";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {map, tap} from "rxjs/operators";
