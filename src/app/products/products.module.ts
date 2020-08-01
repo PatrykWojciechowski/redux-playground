@@ -32,7 +32,10 @@ export const routes: Routes = [
 
 const entityMetadata: EntityMetadataMap = {
   Product: {
-    sortComparer: compareProducts
+    sortComparer: compareProducts,
+    entityDispatcherOptions: {
+      optimisticUpdate: true
+    }
   }
 }
 
