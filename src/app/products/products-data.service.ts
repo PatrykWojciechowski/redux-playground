@@ -4,6 +4,7 @@ import {Product} from "./product.model";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {map, tap} from "rxjs/operators";
+import {Update} from "@ngrx/entity";
 
 const GET_CLIENTS_API = 'http://localhost:3000/products';
 
@@ -18,5 +19,8 @@ export class ProductsDataService extends DefaultDataService<Product> {
     return this.http.get<Product[]>(GET_CLIENTS_API);
   }
 
+  update(update: Update<Product>): Observable<Product> {
+      return this.http.put<Product>(GET_CLIENTS_API + '/' + update.id, update.changes)
+  }
 
 }

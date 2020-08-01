@@ -6,9 +6,10 @@ import {State} from "../../reducers";
 import {Update} from "@ngrx/entity";
 import {productUpdated, selectProduct} from "../product.actions";
 import {ActivatedRoute, ActivatedRouteSnapshot, Route} from "@angular/router";
-import {filter, tap} from "rxjs/operators";
+import {filter, map, tap} from "rxjs/operators";
 import {selectCurrentProduct, selectCurrentProductId} from "../product.selectors";
 import {Observable} from "rxjs";
+import {ProductEntityService} from "../../services/product-entity.service";
 
 @Component({
   selector: 'app-product-details',
@@ -25,17 +26,17 @@ export class ProductDetailsComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private store: Store<State>,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private productEntityService: ProductEntityService,
   ) {
     const id = Number(this.route.snapshot.paramMap.get('productId'));
 
-    this.store
-      .dispatch(selectProduct({id}));
 
-    this.store.pipe(
-      select(selectCurrentProduct),
-      filter(p => !!p)
+
+    this.productEntityService.entities$.pipe(
+      map(products => {
+        return products.find(prod => id === prod.id);
+      })
     ).subscribe(currentProduct => {
         this.product = currentProduct
         this.form.reset({
@@ -55,13 +56,8 @@ export class ProductDetailsComponent implements OnInit {
       ...this.form.value
     };
 
-    const update: Update<Product> = {
-      id: this.product.id,
-      changes: product
-    }
-    console.log('update', update);
-
-    this.store.dispatch(productUpdated({update}))
+    //It knows about which prod to update because it has an id
+    this.productEntityService.update(product);
   }
 
 }
