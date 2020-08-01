@@ -13,6 +13,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {EntityDataModule, EntityMetadataMap, EntityDefinitionService, EntityDataService} from '@ngrx/data';
 import {ProductsDataService} from "./products-data.service";
 import {ProductEntityService} from "../services/product-entity.service";
+import {compareProducts} from "./product.model";
 
 export const routes: Routes = [
   {
@@ -31,7 +32,7 @@ export const routes: Routes = [
 
 const entityMetadata: EntityMetadataMap = {
   Product: {
-
+    sortComparer: compareProducts
   }
 }
 

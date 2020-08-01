@@ -4,6 +4,7 @@ import {fetchProducts} from "../product.actions";
 import {Product} from "../product.model";
 import {Observable} from "rxjs";
 import {selectAllProducts} from "../product.selectors";
+import {ProductEntityService} from "../../services/product-entity.service";
 
 @Component({
   selector: 'app-product-list',
@@ -14,11 +15,9 @@ export class ProductListComponent implements OnInit {
   products$: Observable<Product[]>;
 
   constructor(
-    private store: Store
+    private productSerivce: ProductEntityService
   ) {
-    this.products$ = this.store.pipe(
-      select(selectAllProducts)
-    )
+    this.products$ = this.productSerivce.entities$;
   }
 
   ngOnInit(): void {
